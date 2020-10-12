@@ -1,4 +1,4 @@
-const bx = (hex: string): Buffer => {
+export const bx = (hex: string): Buffer => {
   if (hex === '') {
     return Buffer.alloc(0);
   }
@@ -13,5 +13,3 @@ const bx = (hex: string): Buffer => {
 
   return Buffer.from(cleanHex, 'hex');
 };
-
-export default bx;

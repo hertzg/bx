@@ -1,4 +1,4 @@
-import bx from '../index';
+import { bx } from '../index';
 
 describe('bx', () => {
   it('should produce 0 length buffer on empty string', () => {
