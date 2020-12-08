@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "hertzg",
+      "name": "George Hertz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1886698?v=4",
+      "profile": "http://hertz.gg",
+      "contributions": [
+        "maintenance",
+        "infra",
+        "test",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "node-bx",
+  "projectOwner": "hertzg",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
