@@ -1,6 +1,6 @@
 {
   "name": "@hertzg/bx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
@@ -26,7 +26,8 @@
     "build": "tsc",
     "format": "prettier -w ./src/**/*.{t,j}s",
     "lint": "eslint ./src --ext .js,.ts",
-    "test": "jest src/"
+    "test": "jest src/",
+    "release": "standard-version --dry-run"
   },
   "engines": {
     "node": "> 12"
@@ -42,6 +43,7 @@
     "eslint-plugin-prettier": "^3.2.0",
     "jest": "^26.6.2",
     "prettier": "^2.2.1",
+    "standard-version": "^9.1.0",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
