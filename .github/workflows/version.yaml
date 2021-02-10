@@ -1,6 +1,9 @@
 name: version
 
 on:
+  push:
+    branch:
+      - master
   pull_request:
     branches:
       - master
