@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "prepare": "yarn build",
-    "prepublishOnly": "yarn lint && yarn test",
+    "preversion": "yarn lint && yarn test",
     "build": "tsc",
     "format": "prettier -w ./src/**/*.{t,j}s",
     "lint": "eslint ./src --ext .js,.ts",
