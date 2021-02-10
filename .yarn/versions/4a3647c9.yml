@@ -1,2 +1,2 @@
-releases:
-  "@hertzg/bx": prerelease
+declined:
+  - "@hertzg/bx"
