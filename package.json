@@ -1,13 +1,18 @@
 {
   "name": "@hertzg/bx",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "git@github.com:hertzg/etekcity.git",
+  "homepage": "https://github.com/hertzg/node-bx#readme",
+  "bugs": {
+    "url": "https://github.com/hertzg/node-bx/issues",
+    "email": "georgedot@gmail.com"
+  },
+  "repository": "git@github.com:hertzg/node-bx.git",
   "author": "George Hertz <georgedot@gmail.com>",
   "license": "MIT",
   "files": [
@@ -16,8 +21,6 @@
     "!**/__tests__/*"
   ],
   "scripts": {
-    "postinstall": "yarn fix-lockfiles",
-    "fix-lockfiles": "locktt --registry=https://registry.npmjs.org -p",
     "prepare": "yarn build",
     "prepublishOnly": "yarn lint && yarn test",
     "build": "tsc",
@@ -26,10 +29,10 @@
     "test": "jest src/"
   },
   "engines": {
-    "node": "> 4"
+    "node": "> 12"
   },
   "devDependencies": {
-    "lock-treatment-tool": "^0.4.1",
+    "@tsconfig/node12": "^1.0.7",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.11",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
@@ -42,6 +45,5 @@
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
-  },
-  "gitHead": "068789977eba80190531873dc290ea324a477f27"
+  }
 }
