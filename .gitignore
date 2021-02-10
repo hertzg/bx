@@ -1,5 +1,12 @@
-node_modules/
 .idea/
 .vagrant/
 coverage/
 dist/
+
+# Ignore Yarn 2 files including Zero-Installs
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
