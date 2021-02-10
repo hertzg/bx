@@ -7,7 +7,12 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "git@github.com:hertzg/etekcity.git",
+  "homepage": "https://github.com/hertzg/node-bx#readme",
+  "bugs": {
+    "url": "https://github.com/hertzg/node-bx/issues",
+    "email": "georgedot@gmail.com"
+  },
+  "repository": "git@github.com:hertzg/node-bx.git",
   "author": "George Hertz <georgedot@gmail.com>",
   "license": "MIT",
   "files": [
@@ -29,7 +34,6 @@
     "node": "> 4"
   },
   "devDependencies": {
-    "lock-treatment-tool": "^0.4.1",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.11",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
@@ -38,10 +42,10 @@
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.2.0",
     "jest": "^26.6.2",
+    "lock-treatment-tool": "^0.4.1",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
-  },
-  "gitHead": "068789977eba80190531873dc290ea324a477f27"
+  }
 }
