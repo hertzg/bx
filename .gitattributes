@@ -10,7 +10,7 @@
 *.zip                   binary
 
 # Mark .pnp.* as binary to prevent git from trying to merge it
-.pnp.*                  binary linguist-generated
+/.pnp.*                 binary linguist-generated
 
 # Hide .yarn from GitHub's language detection
-.yarn/**                linguist-vendored
+/.yarn/**               linguist-vendored
