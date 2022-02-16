@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: '12'
       - uses: actions/checkout@v2
+      - run: yarn install
       - run: yarn run test --reporters=./.github/jest-github-reporter.js
       - continue-on-error: true
         uses: codecov/codecov-action@v1
