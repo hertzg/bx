@@ -1,10 +1,12 @@
 {
   "name": "@hertzg/bx",
+  "packageManager": "yarn@3.1.1",
   "version": "1.1.1",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "homepage": "https://github.com/hertzg/node-bx#readme",
@@ -16,9 +18,8 @@
   "author": "George Hertz <georgedot@gmail.com>",
   "license": "MIT",
   "files": [
-    "dist/**/*",
-    "src/**/*",
-    "!**/__tests__/*"
+    "dist",
+    "!dist/__tests__/"
   ],
   "scripts": {
     "prepare": "yarn build",
@@ -30,22 +31,22 @@
     "release": "standard-version --dry-run"
   },
   "engines": {
-    "node": "> 12"
+    "node": ">= 16"
   },
   "devDependencies": {
-    "@tsconfig/node12": "^1.0.7",
-    "@types/jest": "^26.0.19",
-    "@types/node": "^14.14.11",
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
-    "@typescript-eslint/parser": "^4.9.1",
-    "eslint": "^7.15.0",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-prettier": "^3.2.0",
-    "jest": "^26.6.2",
-    "prettier": "^2.2.1",
-    "standard-version": "^9.1.0",
-    "ts-jest": "^26.4.4",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.1.3"
+    "@tsconfig/node16": "^1.0.2",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.18",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.5.1",
+    "standard-version": "^9.3.2",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.4"
   }
 }

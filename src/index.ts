@@ -1,6 +1,6 @@
-export const bx = (hex: string): Buffer => {
+export const bx = (hex: string): ArrayBuffer => {
   if (hex === '') {
-    return Buffer.alloc(0);
+    return new ArrayBuffer(0);
   }
 
   const cleanHex = hex.replace(/[^0-9a-f]/g, '');
@@ -11,5 +11,10 @@ export const bx = (hex: string): Buffer => {
     );
   }
 
-  return Buffer.from(cleanHex, 'hex');
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const data = cleanHex.match(/../g)!.map((hex) => parseInt(hex, 16));
+
+  return new Uint8Array(data).buffer;
 };
+
+export const bxx = (hex: string): Buffer => Buffer.from(bx(hex));

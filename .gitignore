@@ -2,11 +2,13 @@
 .vagrant/
 coverage/
 dist/
+node_modules/
 
-# Ignore Yarn 2 files including Zero-Installs
+# Yarn berry without Zero-Installs
 .yarn/*
-!.yarn/cache
+!.yarn/patches
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
+.pnp.*
