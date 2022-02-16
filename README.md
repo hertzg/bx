@@ -12,11 +12,17 @@ yarn add @hertzg/bx
 npm i --save @hertzg/bx
 ```
 
+**Warning:** This package is native [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) and no
+longer provides a CommonJS export. If your project uses CommonJS, you'll have
+to [convert to ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) or use
+the [dynamic `import()`](https://v8.dev/features/dynamic-import) function.
+
 ## Behavior
 
-Package provides `bx` method thar accepts a string containing `hex` encoded buffer. The string will be stripped of
-any non hexadecimal symbols (eg: `[^0-9-a-f]`) and if the resulting string has even length then it's used as a value
-for `Buffer.from(value, 'hex')` otherwise throws a `TypeError`.
+Package provides `bx` and `bxx` method thar accepts a string containing `hex` encoded buffer. The string will be
+stripped of any non-hexadecimal symbols (eg: `[^0-9-a-f]`) and if the resulting string has even length then it's used as
+a value for `Buffer.from(value, 'hex')` with `bxx` and as `new Uint8Array(value).buffer` with `bx` or otherwise throws
+a `TypeError`.
 
 ## Example
 
@@ -25,13 +31,27 @@ Typescript
 ```typescript
 import { bx } from '@hertzg/bx';
 
-const HEADER = bx('00 ff 00 ff'); // <Buffer 00 ff 00 ff>
-const SYNC1 = bx('00ff00ff_b4_01020304'); // <Buffer 00 ff 00 ff b4 01 02 03 04>
-const ZEROLENGTH = bx(''); // <Buffer >
+const HEADER = bx('00 ff 00 ff'); // ArrayBuffer { [Uint8Contents]: <00 ff 00 ff>, byteLength: 4 }
+const SYNC1 = bx('00ff00ff_b4_01020304'); // ArrayBuffer { [Uint8Contents]: <00 ff 00 ff b4 01 02 03 04>, byteLength: 9 }
+const ZEROLENGTH = bx(''); // ArrayBuffer { [Uint8Contents]: <>, byteLength: 0 }
 
 const WRONGHEX = bx('z ff 00 00'); // throws
 const MISSZERO = bx('f2-00_0_00'); // throws
 const SPACES = bx('          '); // throws
+```
+
+If you want to get `Buffer` instead of `ArrayBuffer` just replace `bx` calls with `bxx`
+
+```typescript
+import { bxx } from '@hertzg/bx';
+
+const HEADER = bxx('00 ff 00 ff'); // <Buffer 00 ff 00 ff>
+const SYNC1 = bxx('00ff00ff_b4_01020304'); // <Buffer 00 ff 00 ff b4 01 02 03 04>
+const ZEROLENGTH = bxx(''); // <Buffer >
+
+const WRONGHEX = bxx('z ff 00 00'); // throws
+const MISSZERO = bxx('f2-00_0_00'); // throws
+const SPACES = bxx('          '); // throws
 ```
 
 More examples can be seen in [**tests**](https://github.com/hertzg/node-bx/blob/master/src/__tests__/index.spec.ts)
