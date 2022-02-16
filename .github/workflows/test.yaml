@@ -24,6 +24,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn install --immutable
-      - run: yarn run test --reporters=./.github/jest-github-reporter.js
+      - run: yarn run test --reporters=./.github/jest-github-reporter.cjs
       - continue-on-error: true
         uses: codecov/codecov-action@v1
