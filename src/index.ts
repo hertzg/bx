@@ -1,4 +1,11 @@
 /**
+ * Package provides bx and bxx method thar accepts a string containing hex encoded data
+ * and returns an ArrayBuffer or Buffer respectively.
+ *
+ * @module
+ */
+
+/**
  * A method that accepts a string containing hex encoded buffer.
  * The string will be stripped of any non-hexadecimal symbols (eg: [^0-9-a-f]) and
  * if the resulting string has even length then it's used as new Uint8Array(value).buffer
