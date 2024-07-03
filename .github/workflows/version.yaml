@@ -2,7 +2,7 @@ name: version
 
 on:
   push:
-    branch:
+    branches:
       - master
   pull_request:
     branches:
@@ -12,7 +12,7 @@ jobs:
   check:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - run: yarn version check

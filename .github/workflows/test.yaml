@@ -9,14 +9,14 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/setup-node@v2-beta
+      - uses: actions/setup-node@v4
         with:
           node-version: '16'
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -26,4 +26,4 @@ jobs:
       - run: yarn install --immutable
       - run: yarn run test --reporters=./.github/jest-github-reporter.cjs
       - continue-on-error: true
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v4
