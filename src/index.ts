@@ -1,34 +1,68 @@
 /**
- * Package provides bx and bxx method thar accepts a string containing hex encoded data
+ * Package provides {@linkcode bx} and {@linkcode bxx} method thar accepts a string containing hex encoded data
  * and returns an ArrayBuffer or Buffer respectively.
  *
- * @module
- */
-
-/**
- * A method that accepts a string containing hex encoded buffer.
- * The string will be stripped of any non-hexadecimal symbols (eg: [^0-9-a-f]) and
- * if the resulting string has even length then it's used as new Uint8Array(value).buffer
- * or otherwise throws a TypeError.
- *
- * @example Examples of cases where it returns an ArrayBuffer
+ * @example
  * ```ts
+ * // Examples of cases when it returns an ArrayBuffer
  * const HEADER = bx('00 ff 00 ff'); // ArrayBuffer { [Uint8Contents]: <00 ff 00 ff>, byteLength: 4 }
  * const SYNC1 = bx('00ff00ff_b4_01020304'); // ArrayBuffer { [Uint8Contents]: <00 ff 00 ff b4 01 02 03 04>, byteLength: 9 }
  * const ZEROLENGTH = bx(''); // ArrayBuffer { [Uint8Contents]: <>, byteLength: 0 }
  * ```
  *
- * @example Examples of cases when it throws
+ * @example
  * ```ts
- * const WRONGHEX = bx('z ff 00 00'); // throws
- * const MISSZERO = bx('f2-00_0_00'); // throws
- * const SPACES = bx('          '); // throws
+ * // Examples of cases when it throws
+ * const WRONGHEX = bx('z ff 00 00'); // throws TypeError
+ * const MISSZERO = bx('f2-00_0_00'); // throws TypeError
+ * const SPACES = bx('          '); // throws TypeError
+ * ```
+ * @module
+ */
+
+/**
+ * A method that accepts a string containing hex encoded buffer.
+ * The string will be stripped of any non-hexadecimal symbols (eg: `[^0-9-a-f]`) and
+ * if the resulting string has even length then it's used as new Uint8Array(value).buffer
+ * or otherwise throws a TypeError.
+ *
+ * @example
+ * ```ts
+ * // Using spaces to separate bytes
+ * const HEADER = bx('00 ff 00 ff'); // ArrayBuffer { [Uint8Contents]: <00 ff 00 ff>, byteLength: 4 }
+ * ```
+ *
+ * @example
+ * ```ts
+ * // Using underscores, dashes and other symbols to separate bytes
+ * const SYNC1 = bx('00ff00ff_b4_01020304'); // ArrayBuffer { [Uint8Contents]: <00 ff 00 ff b4 01 02 03 04>, byteLength: 9 }
+ * ```
+ *
+ * @example
+ * ```ts
+ * // Empty string will return an empty ArrayBuffer
+ * const ZEROLENGTH = bx(''); // ArrayBuffer { [Uint8Contents]: <>, byteLength: 0 }
+ *
+ * // Only empty strings yield empty ArrayBuffer otherwise it throws
+ * const SPACES_THROWS = bx('          '); // throws TypeError
+ * ```
+ *
+ * @example
+ * ```ts
+ * // Invalid hex strings will throw a TypeError
+ * const WRONGHEX = bx('z ff 00 00'); // throws TypeError
+ * ```
+ *
+ * @example
+ * ```ts
+ * // Each byte must be represented by two characters
+ * const MISSZERO = bx('f2-00_0_00'); // throws TypeError
  * ```
  *
  * @param hex The string containing hex encoded data
- * @returns An {@link ArrayBuffer} containing that data.
+ * @returns An {@linkcode ArrayBuffer} containing that data.
  */
-export const bx = (hex: string): ArrayBuffer => {
+export function bx(hex: string): ArrayBuffer {
   if (hex === '') {
     return new ArrayBuffer(0);
   }
@@ -45,12 +79,15 @@ export const bx = (hex: string): ArrayBuffer => {
   const data = cleanHex.match(/../g)!.map((hex) => parseInt(hex, 16));
 
   return new Uint8Array(data).buffer;
-};
+}
 
 /**
- * Exactly the same as {@link bx} just returns NodeJS Buffer instead of ArrayBuffer
+ * Returns NodeJS Buffer for the given hex string otherwise exactly the same as {@linkcode bx}.
+ * For examples see {@linkcode bx} documentation.
  *
  * @param hex The string containing hex encoded data
- * @returns A {@link Buffer} containing that data.
+ * @returns A Buffer containing that data.
  */
-export const bxx = (hex: string): Buffer => Buffer.from(bx(hex));
+export function bxx(hex: string): Buffer {
+  return Buffer.from(bx(hex));
+}
